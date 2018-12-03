@@ -4,4 +4,4 @@ WORKDIR /magitech
 
 EXPOSE 3000
 
-CMD npm start
+CMD npm run migrate:up && npm start

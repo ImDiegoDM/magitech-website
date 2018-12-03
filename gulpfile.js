@@ -1,5 +1,7 @@
-const { watch,series,parallel } = require('gulp');
+const { watch,series,parallel,task,src,dest } = require('gulp');
 const { exec } = require('child_process');
+const ts = require('gulp-typescript');
+const tsProject = ts.createProject('tsconfig.json');
 
 // The `clean` function is not exported so it can be considered a private task.
 // It can still be used within the `series()` composition.
@@ -31,7 +33,7 @@ function runServer(cb) {
 
 function watchTsfiles(cb) {
   console.log('watching ts files')
-  watch('src/*.ts', build);
+  watch('src/*.ts',{interval: 1000, usePolling: true}, build);
 }
 
 function defaultFunc(cb){
