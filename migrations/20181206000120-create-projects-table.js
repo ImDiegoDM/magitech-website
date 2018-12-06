@@ -19,6 +19,7 @@ exports.up = function(db) {
     id:{type:'int',primaryKey:true},
     types_id:{
       type:'int',
+      notNull:true,
       foreignKey:{
         name:'projects_types_id_fk',
         table:'project_types',
@@ -31,7 +32,7 @@ exports.up = function(db) {
         }
       }
     },
-    name:{type:'string',length:50},
+    name:{type:'string',length:50,notNull:true},
     googl_play_link:'string',
     steam_link:'string',
     apple_link:'string',

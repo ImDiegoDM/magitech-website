@@ -17,9 +17,10 @@ exports.setup = function(options, seedLink) {
 exports.up = function(db) {
   return db.createTable('names',{
     id:{type:'int',primaryKey:true},
-    name:{type:'string',length:25},
+    name:{type:'string',length:25,notNull:true},
     lang_id:{
       type:'string',
+      notNull:true,
       length:10,
       foreignKey:{
         name:'names_lang_id_fk',

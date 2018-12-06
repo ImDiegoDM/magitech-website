@@ -18,6 +18,7 @@ exports.up = function(db) {
   return db.createTable('what_we_do-texts',{
     wwd_id:{
       type:'int',
+      notNull:true,
       foreignKey:{
         name:'what_we_do-texts_wwd_id_fk',
         table:'what_we_do',
@@ -32,6 +33,7 @@ exports.up = function(db) {
     },
     texts_id:{
       type:'int',
+      notNull:true,
       foreignKey:{
         name:'what_we_do-texts_texts_id_fk',
         table:'texts',
