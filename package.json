@@ -13,7 +13,8 @@
     "gulp:tasks": "gulp --tasks",
     "db-migrate": "db-migrate",
     "migrate:up": "db-migrate up",
-    "migrate:down": "db-migrate down"
+    "migrate:down": "db-migrate down",
+    "migrate:reset": "db-migrate reset"
   },
   "author": "Diego Matias de Oliveria (contato@diegomatias.com.br)",
   "license": "ISC",

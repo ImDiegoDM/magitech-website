@@ -15,16 +15,14 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db) {
-  return db.createTable('users',{
-    id:{type:'int',primaryKey: true},
-    name:{type:'string',length:50},
-    email:'string',
-    password:'string'
-  })
+  return db.createTable('languages',{
+    id:{type:'string',length:10,primaryKey:true},
+    name:{type:'string',length:50,notNull:true}
+  });
 };
 
 exports.down = function(db) {
-  return db.dropTable('users');
+  return db.dropTable('languages');
 };
 
 exports._meta = {
