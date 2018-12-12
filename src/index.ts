@@ -1,10 +1,12 @@
 import * as express from 'express';
-import {routes} from './routes';
+import { routes } from './apiRoutes';
+import { fallback } from './fallback';
 
 const app = express();
-
 routes(app);
 
-app.listen(3000, function () {
+fallback(app);
+
+app.listen(3000, () => {
   console.log('Example app listening on port 3000 !');
 });

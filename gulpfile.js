@@ -33,7 +33,7 @@ function runServer(cb) {
 
 function watchTsfiles(cb) {
   console.log('watching ts files')
-  watch('src/*.ts',{interval: 1000, usePolling: true}, build);
+  watch('src/**/*.ts',{interval: 1000, usePolling: true,ignored:'src/admin_spa/'}, build);
 }
 
 function defaultFunc(cb){
@@ -46,4 +46,5 @@ function css(cb) {
   cb();
 }
 exports.build = build;
+exports.watchTsfiles = watchTsfiles;
 exports.default = series(build,parallel(runServer,watchTsfiles));
