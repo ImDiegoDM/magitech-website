@@ -1,6 +1,9 @@
+import * as dotenv from 'dotenv';
 import * as express from 'express';
 import { routes } from './apiRoutes';
 import { fallback } from './fallback';
+
+dotenv.config();
 
 const app = express();
 routes(app);
