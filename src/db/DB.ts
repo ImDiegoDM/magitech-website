@@ -1,4 +1,5 @@
 import * as mysql from 'mysql';
+import connection from '../dbConection';
 
 export interface IDbFields {
   [key: string]: string;
@@ -8,16 +9,11 @@ export class DB<T extends IDbFields> {
   protected tableName: string;
   protected fields: T;
 
-  protected connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password : process.env.DB_PASS,
-    database: process.env.DB_DATABASE,
-  });
+  protected connection = connection;
 
   public all(): Promise<T[]> {
     return new Promise((resolve, reject) => {
-      this.query(`SELECT ${this.mapFields()} FROM ${this.tableName};`, (err, result, field) => {
+      this.connection.query(`SELECT ${this.mapFields()} FROM ${this.tableName};`, (err, result, field) => {
         if (err) { reject(err); }
 
         resolve(result);
@@ -27,9 +23,47 @@ export class DB<T extends IDbFields> {
 
   public get(id: string|number): Promise<T> {
     return new Promise((resolve, reject) => {
-      this.query({
-        sql: `SELECT ${this.mapFields()} WHERE id = ? FROM ${this.tableName};`,
+      const query = this.connection.query({
+        sql: `SELECT ${this.mapFields()} FROM ${this.tableName} WHERE id = ?;`,
         values: [id],
+      }, 
+      (err, result, field) => {
+        if (err) { reject(err); }
+
+        resolve(result[0]);
+      });
+    });
+  }
+
+  public save(values: T | T[]): Promise<T> {
+    return new Promise((resolve, reject) => {
+      if (Array.isArray(values)) {
+        const query = this.connection.query(
+          `INSERT INTO ${this.tableName} (${this.mapFields(true)}) VALUES ?`,
+          [this.toArray(values)],
+          (err, result) => {
+          if (err) { reject(err); }
+  
+          resolve(result);
+          },
+        );
+      } else {
+        this.connection.query(`INSERT INTO ${this.tableName} SET ?`, values, (err, result) => {
+          if (err) { reject(err); }
+  
+          resolve(result);
+        });
+      }
+
+    });
+  }
+
+  public update(values: any, id: string | number): Promise<T> {
+    return new Promise((resolve, reject) => {
+      const [fields, valuesArray] = this.mapFieldsValues(values, id);
+      this.connection.query({
+        sql: `UPDATE ${this.tableName} SET ${fields} WHERE id = ?;`,
+        values: valuesArray,
       }, 
       (err, result, field) => {
         if (err) { reject(err); }
@@ -39,19 +73,26 @@ export class DB<T extends IDbFields> {
     });
   }
 
-  protected query(query: string | mysql.QueryOptions, result: mysql.queryCallback) {
-    this.connection.connect();
+  private toArray(values: T[]): string[][] {
+    const arrayValues = [];
+    for (const iterator of values) {
+      const arrayIterator = [];
+      for (const key in iterator) {
+        if (iterator.hasOwnProperty(key)) {
+          arrayIterator.push(iterator[key]);
+        }
+      }
+      arrayValues.push(arrayIterator);
+    }
 
-    this.connection.query(query, result);
-
-    this.connection.end();
+    return arrayValues;
   }
 
-  private mapFields(): string {
+  private mapFields(all: boolean = false): string {
     let fields = '';
 
     for (const key in this.fields) {
-      if (this.isHidden(this.fields[key])) {
+      if (!this.isHidden(this.fields[key]) || all) {
         fields += `${key}, `;
       }
     }
@@ -59,8 +100,24 @@ export class DB<T extends IDbFields> {
     return fields.slice(0, -2);
   }
 
+  private mapFieldsValues(values: T, id?: string|number) {
+    let fields = '';
+    const valuesArray = [];
+
+    for (const key in values) {
+      fields += `${key} = ?, `;
+      valuesArray.push(values[key]);
+    }
+
+    if (id) {
+      valuesArray.push(id);
+    }
+
+    return [fields.slice(0, -2), valuesArray];
+  }
+
   private isHidden(field: string): boolean {
-    return field.indexOf('hidden') === -1;
+    return field.indexOf('hidden') !== -1;
   }
 
 }

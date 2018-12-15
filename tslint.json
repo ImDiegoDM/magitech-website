@@ -6,6 +6,8 @@
       "quotemark": [true, "single", "jsx-double"],
       "jsx-boolean-value": false,
       "no-console": false,
-      "no-trailing-whitespace":false
+      "no-trailing-whitespace":false,
+      "forin":false,
+      "radix":false
     }
 }

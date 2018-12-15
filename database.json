@@ -6,5 +6,14 @@
     "database": { "ENV" : "DB_DATABASE" },
     "driver": "mysql",
     "multipleStatements": true
+  },
+  "test": {
+    "host": "localhost",
+    "port": 9906,
+    "user": "root",
+    "password" : "admin123",
+    "database": "db_test",
+    "driver": "mysql",
+    "multipleStatements": true
   }
 }

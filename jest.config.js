@@ -1,3 +1,4 @@
+
 module.exports = {
   "roots": [
     "<rootDir>/src"
@@ -14,4 +15,11 @@ module.exports = {
     "json",
     "node"
   ],
+  "setupTestFrameworkScriptFile": "<rootDir>/lib/db-jest.js",
+  "collectCoverageFrom": [
+    "src/**/*.{ts,tsx}",
+    "!**/node_modules/**",
+    "!**/vendor/**",
+    "!**/lib/**"
+  ]
 }
