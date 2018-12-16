@@ -19,6 +19,14 @@ exports.up = function(db) {
     id:{type:'int',primaryKey:true},
     title:{type:'string',length:80,notNull:true},
     subtitle:{type:'string',notNull:true},
+    created_at:{ 
+      type:'timestamp',
+      defaultValue: new String('CURRENT_TIMESTAMP')
+    },
+    modified_at:{
+      type:'timestamp',
+      defaultValue: new String('CURRENT_TIMESTAMP')
+    },
     lang_id:{
       type:'string',
       length:10,

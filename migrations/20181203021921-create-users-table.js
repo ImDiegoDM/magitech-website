@@ -19,7 +19,15 @@ exports.up = function(db) {
     id:{type:'int',primaryKey: true},
     name:{type:'string',length:50},
     email:'string',
-    password:'string'
+    password:'string',
+    created_at:{ 
+      type:'timestamp',
+      defaultValue: new String('CURRENT_TIMESTAMP')
+    },
+    modified_at:{
+      type:'timestamp',
+      defaultValue: new String('CURRENT_TIMESTAMP')
+    }
   })
 };
 

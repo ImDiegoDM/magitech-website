@@ -18,6 +18,14 @@ exports.up = function(db) {
   return db.createTable('simple_texts',{
     id:{type:'int',primaryKey:true},
     text:{type:'text',notNull:true},
+    created_at:{ 
+      type:'timestamp',
+      defaultValue: new String('CURRENT_TIMESTAMP')
+    },
+    modified_at:{
+      type:'timestamp',
+      defaultValue: new String('CURRENT_TIMESTAMP')
+    },
     lang_id:{
       type:'string',
       length:10,

@@ -17,6 +17,14 @@ exports.setup = function(options, seedLink) {
 exports.up = function(db) {
   return db.createTable('projects',{
     id:{type:'int',primaryKey:true},
+    created_at:{ 
+      type:'timestamp',
+      defaultValue: new String('CURRENT_TIMESTAMP')
+    },
+    modified_at:{
+      type:'timestamp',
+      defaultValue: new String('CURRENT_TIMESTAMP')
+    },
     types_id:{
       type:'int',
       notNull:true,

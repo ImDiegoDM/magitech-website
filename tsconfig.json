@@ -6,15 +6,17 @@
     "module": "commonjs",
     "target": "es6",
     "jsx": "react",
-    "typeRoots": [ "./types", "./node_modules/@types"],
-    "baseUrl": ".",
-    "paths": {
-      "*": ["./types/*"],
-    }
+    "typeRoots": [
+      "./node_modules/@types",
+      "./types"
+    ],
+    "types": [
+      "jest"
+    ]
   },
   "include": [
     "src/**/*",
-    ".d.ts"
+    "types/jest.d.ts"
   ],
   "exclude": [
     "node_modules",
