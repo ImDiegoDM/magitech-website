@@ -1,7 +1,13 @@
-import {Request, Response} from 'express';
+import {Request, Response, Router} from 'express';
 import { IResourceController } from './Interfaces';
 
 class UserResource implements IResourceController {
+  public basepath = 'users';
+
+  public mapRoutes(router: Router) {
+    // to do
+  }
+
   public get( request: Request, response: Response) {
     // Implement get method
   }

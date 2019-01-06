@@ -8,6 +8,8 @@
       "no-console": false,
       "no-trailing-whitespace":false,
       "forin":false,
-      "radix":false
+      "radix":false,
+      "variable-name":false,
+      "interface-name": false
     }
 }

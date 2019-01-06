@@ -1,13 +1,6 @@
-import { DB, IDbFields } from '../db/DB';
+import { DB } from 'easy-node-db';
 
-interface IUserField extends IDbFields {
-  id?: string;
-  name: string;
-  email: string;
-  password: string;
-}
-
-export class Users extends DB<IUserField> {
+export class Users extends DB {
   protected tableName = 'users';
   protected fields = {
     id: '',

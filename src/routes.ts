@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { Application } from 'express-serve-static-core';
 import * as controllers from './Controllers';
-import { mapRoutes } from './mapRoutes';
+import { mapRoutes } from './utils/mapRoutes';
 
 export function routes(app: Application) {
   const apiRouter = Router();
@@ -11,6 +11,7 @@ export function routes(app: Application) {
   app.use('/v1/api', apiRouter);
 
   app.get('/', (req, res) => {
-    res.send('ok my');
+    res.render('index', { name: 'John' });
+    
   });
 }

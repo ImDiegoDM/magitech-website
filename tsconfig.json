@@ -5,23 +5,12 @@
     "sourceMap": true,
     "module": "commonjs",
     "target": "es6",
-    "jsx": "react",
-    "typeRoots": [
-      "./node_modules/@types",
-      "./types"
-    ],
-    "types": [
-      "jest"
-    ]
+    "jsx": "preserve",
   },
-  "include": [
-    "src/**/*",
-    "types/jest.d.ts"
-  ],
+  "include": ["src/**/*"],
   "exclude": [
     "node_modules",
     "**/*.spec.ts",
     "**/*.test.ts",
-    "src/admin_spa/**/*"
   ]
 }

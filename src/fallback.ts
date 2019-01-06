@@ -6,7 +6,7 @@ export function fallback(app: Application) {
   });
 
   const error500: ErrorRequestHandler = (err, req, res, next) => {
-    res.status(500).send('500: Internal Server Error');
+    res.status(500).send('500: Internal Server Error:' + err);
   };
 
   // Handle 500

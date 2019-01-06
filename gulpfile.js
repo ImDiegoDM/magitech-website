@@ -33,7 +33,7 @@ function runServer(cb) {
 
 function watchTsfiles(cb) {
   console.log('watching ts files')
-  watch('src/**/*.ts',{interval: 1000, usePolling: true,ignored:'src/admin_spa/'}, build);
+  watch(['src/**/*.ts','src/**/*.tsx'],{interval: 1000, usePolling: true,ignored:'src/admin_spa/'}, build);
 }
 
 function defaultFunc(cb){
