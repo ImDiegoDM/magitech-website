@@ -39,7 +39,7 @@ function runServer(cb) {
 
 function watchTsfiles(cb) {
   console.log('watching ts files')
-  watch(['src/**/*.ts','src/**/*.tsx'], build);
+  watch(['src/**/*.ts','src/**/*.tsx'],{usePolling: true}, build);
 }
 
 function movePublic(){
@@ -69,7 +69,7 @@ async function buildSass() {
 }
 
 function watchLessfiles(cb) {
-  watch('src/**/*.less', buildSass);
+  watch('src/**/*.less',{usePolling: true}, buildSass);
 }
 
 exports.build = build;

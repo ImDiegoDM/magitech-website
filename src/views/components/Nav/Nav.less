@@ -1,3 +1,57 @@
-.navigation{
-  color: aliceblue;
+@import "../../container-width.less";
+
+img.logo{
+  height: 40px;
+}
+
+.nav-gradient{
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6d5fcd+0,6d5fcd+100&1+0,0+100 */
+  background: -moz-linear-gradient(top, rgba(109,95,205,1) 0%, rgba(109,95,205,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(109,95,205,1) 0%,rgba(109,95,205,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(109,95,205,1) 0%,rgba(109,95,205,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d5fcd', endColorstr='#006d5fcd',GradientType=0 ); /* IE6-9 */
+}
+
+.nav{
+  z-index: 100;
+  .nav-gradient();
+  position: fixed;
+  top: 0;
+  width: 100%;
+  .nav-container{
+    width: 100%;
+    margin: auto;
+    .container-width();
+    .nav-content{
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 0;
+      align-items: center;
+    }
+  
+    nav{
+      display: flex;
+      a{
+        color: white;
+        padding: 0 20px;
+        &:last-child{
+          padding-right: 0;
+        }
+        &:visited{
+          color: white;
+        }
+        span.label{
+          display: block;
+          transition: transform .3s;
+          transform: translateY(0px);
+        }
+        &:hover{
+          span.label{
+            transform: translateY(5px);
+          }
+          text-decoration: none;
+        }
+      }
+    }
+  }
 }

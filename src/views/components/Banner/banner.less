@@ -1,0 +1,15 @@
+@import "../../container-width.less";
+
+.banner-container{
+  background-image: url("shield_impact/image1.png");
+  background-size: cover;
+  background-position: 50% 70%;
+  opacity: .3;
+  -webkit-mask-image: linear-gradient(to bottom,#000 75%,rgba(0,0,0,0));
+  mask-image: linear-gradient(to bottom,#000 75%,rgba(0,0,0,0));
+  height: 100vh;
+  content{
+    margin: auto;
+    .container-width();
+  }
+}

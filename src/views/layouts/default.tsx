@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Banner } from '../components/Banner';
 import { Nav } from '../components/Nav/Nav';
 
 export interface DefaultLayout {
@@ -8,10 +9,22 @@ export interface DefaultLayout {
 }
 
 const links = [
-  {
-    label: 'about',
-    href: './about',
-  },
+    {
+      label: 'about',
+      href: './about',
+    },
+    {
+      label: 'services',
+      href: './services',
+    },
+    {
+      label: 'portfolio',
+      href: './portfolio',
+    },
+    {
+      label: 'contact',
+      href: './contact',
+    },
 ];
 
 export default function DefaultLayout(props: DefaultLayout) {
@@ -23,8 +36,9 @@ export default function DefaultLayout(props: DefaultLayout) {
       <link rel="stylesheet" href="public/main.css"/>
     </head>
     <body className="gradient-bg">
-      <div className="magitech-container">
-        <Nav links={links}/>
+      <Nav links={links}/>
+      <Banner />
+      <div className="magitech-container container-up">
         <div className="magitech-content">
           {props.children}
         </div>
