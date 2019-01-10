@@ -41,6 +41,7 @@ exports.up = function(db) {
       }
     },
     name:{type:'string',length:50,notNull:true},
+    description:{type:'string',notNull:true},
     googl_play_link:'string',
     steam_link:'string',
     apple_link:'string',

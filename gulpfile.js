@@ -1,4 +1,5 @@
 const { watch,series,parallel,task,src,dest } = require('gulp');
+const copy = require('gulp-copy');
 const { exec } = require('child_process');
 const concat = require('gulp-concat');
 const cleanCSS = require('gulp-clean-css');
@@ -23,6 +24,14 @@ function build() {
       jsx: "preserve",
     }))
     .pipe(dest('./dist'));
+}
+
+function moveJs(){
+  return src('src/**/js/*.js',{realpath:true}).pipe(copy('dist/public/js', { prefix: 100 }))
+}
+
+function watchJs(){
+  watch('src/**/js/*.js',{usePolling: true}, moveJs);
 }
 
 function runServer(cb) {
@@ -72,7 +81,11 @@ function watchLessfiles(cb) {
   watch('src/**/*.less',{usePolling: true}, buildSass);
 }
 
+exports.moveJs = moveJs;
 exports.build = build;
 exports.watchTsfiles = watchTsfiles;
 exports.sass = buildSass;
-exports.default = series(parallel(build,buildSass),parallel(runServer,watchTsfiles,watchLessfiles));
+exports.default = series(
+  parallel(build,buildSass,moveJs),
+  parallel(runServer,watchTsfiles,watchLessfiles,watchJs)
+);

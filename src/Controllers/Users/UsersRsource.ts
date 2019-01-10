@@ -1,7 +1,7 @@
 import {Request, Response, Router} from 'express';
-import { IResourceController } from './Interfaces';
+import { IResourceController } from '../Interfaces';
 
-class UserResource implements IResourceController {
+export class UserResource implements IResourceController {
   public basepath = 'users';
 
   public mapRoutes(router: Router) {
@@ -28,5 +28,3 @@ class UserResource implements IResourceController {
     // Implement update method
   }
 }
-
-export const Users = new UserResource();

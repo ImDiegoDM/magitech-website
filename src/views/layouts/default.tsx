@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Project } from '../../Interfaces/projects';
 import { Banner } from '../components/Banner';
 import { Nav } from '../components/Nav/Nav';
 
@@ -6,6 +7,7 @@ export interface DefaultLayout {
   title: string;
   children: JSX.Element | JSX.Element[];
   bodyClass?: any;
+  highlights: Project[];
 }
 
 const links = [
@@ -37,12 +39,14 @@ export default function DefaultLayout(props: DefaultLayout) {
     </head>
     <body className="gradient-bg">
       <Nav links={links}/>
-      <Banner />
+      <Banner highlights={props.highlights}/>
       <div className="magitech-container container-up">
         <div className="magitech-content">
           {props.children}
         </div>
       </div>
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js" />
+      <script src="public/js/banner.js"></script>
     </body>
   </html>;
 }

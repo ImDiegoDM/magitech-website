@@ -1,17 +1,21 @@
 import { Router } from 'express';
 import { Application } from 'express-serve-static-core';
-import * as controllers from './Controllers';
+import { HomeController, UserResource } from './Controllers';
 import { mapRoutes } from './utils/mapRoutes';
 
 export function routes(app: Application) {
   const apiRouter = Router();
+  const staticRouter = Router();
 
-  mapRoutes(apiRouter, controllers);
+  mapRoutes(apiRouter, [
+    new UserResource(),
+  ]);
+
+  mapRoutes(staticRouter, [
+    new HomeController(),
+  ]);
 
   app.use('/v1/api', apiRouter);
 
-  app.get('/', (req, res) => {
-    res.render('index', { name: 'John' });
-    
-  });
+  app.use('/', staticRouter);
 }

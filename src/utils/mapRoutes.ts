@@ -1,14 +1,10 @@
 import { Router } from 'express';
-import { IResourceController } from '../Controllers/Interfaces';
+import { IController } from '../Controllers/Interfaces';
 
-interface IController {
-  [index: string]: IResourceController;
-}
-
-export function mapRoutes(router: Router, controller: IController) {
-  for (const key in controller) {
-    if (controller[key]) {
-      controller[key].mapRoutes(router);
+export function mapRoutes(router: Router, controller: IController[]) {
+  for (const ctrl of controller) {
+    if (ctrl) {
+      ctrl.mapRoutes(router);
     }
   }
 }
