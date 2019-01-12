@@ -89,6 +89,33 @@
           right: 0;
         }
       }
+      .banner-icons-container{
+        position: absolute;
+        bottom: 12%;
+        height: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        .selected-icon{
+          width: 10px;
+          height: 10px;
+          margin: 0 10px;
+          border-radius: 50%;
+          position: relative;
+          padding: 1px;
+          &.active::after{
+            content: '';
+            height: 80%;
+            width: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border-radius: 100%;
+            background-color: #fff;
+          }
+          border: 1px solid white;
+        }
+      }
     }
   }
   content{

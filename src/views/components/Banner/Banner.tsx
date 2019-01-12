@@ -44,6 +44,10 @@ export function Banner(props: BannerProps) {
         <button className="right">
           <FontAwesomeIcon icon={faChevronRight}/>
         </button>
+        <div className="banner-icons-container">
+          <span className="selected-icon"></span>
+          <span className="selected-icon"></span>
+        </div>
       </div>
     </div>
   </div>;
