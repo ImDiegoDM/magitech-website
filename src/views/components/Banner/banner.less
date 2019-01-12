@@ -1,20 +1,94 @@
 @import "../../container-width.less";
 
 .banner-container{
-  
   height: 100vh;
   overflow: hidden;
   .banner-item-wrap{
     display: flex;
     height: 100%;
     .banner-item{
+      display: block;
       width: 100vw;
       height: 100%;
-      background-size: cover;
-      background-position: 50% 70%;
-      opacity: .3;
-      -webkit-mask-image: linear-gradient(to bottom,#000 75%,rgba(0,0,0,0));
-      mask-image: linear-gradient(to bottom,#000 75%,rgba(0,0,0,0));
+      position: relative;
+      .banner-content{
+        height: 100%;
+        margin: auto;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 20px;
+        position: relative;
+        h3{
+          font-family: "MotionControl";
+          height: 46%;
+          font-size: 4.5em;
+          width: 300px;
+          margin: 0;
+          line-height: .8em;
+        }
+        .banner-description{
+          font-size: .85em;
+          line-height: 1.3;
+          margin-top: 80px;
+          width: 300px;
+          text-align: justify;
+          display: flex;
+          flex-direction: column;
+          div{
+            margin-top: 15px;
+            a{
+              img{
+                display: block;
+                float: right;
+                height: 40px; 
+              }
+            }
+          }
+        }
+        .container-width();
+      }
+      
+      .banner-image{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: 50% 70%;
+        opacity: .3;
+        z-index: -1;
+        top: 0;
+        -webkit-mask-image: linear-gradient(to bottom,#000 75%,rgba(0,0,0,0));
+        mask-image: linear-gradient(to bottom,#000 75%,rgba(0,0,0,0));
+      }
+    }
+  }
+  .banner-buttons{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top:0;
+    div{
+      margin: auto;
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      .container-width();
+      button{
+        position: absolute;
+        color: white;
+        svg{
+          height: 20px;
+        }
+        &.left{
+          left: 0;
+        }
+        &.right{
+          right: 0;
+        }
+      }
     }
   }
   content{

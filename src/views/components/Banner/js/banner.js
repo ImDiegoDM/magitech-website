@@ -7,26 +7,52 @@ $(document).ready(function(){
   })
 
   function step(){
-    if(index === count){
+    console.log('step');
+    if(index<count-1){
+      index++;
+    }else{
       $('.banner-container').scrollLeft(0);
       index=1;
     }
     $('.banner-container').animate({ scrollLeft: window.innerWidth * index }, 600);
-    console.log(index);
-
-    if(index<count){
-      index++;
-    }else{
-      index=0;
-    }
   }
 
+  function stepBack(){
+    console.log('stepBack');
+
+    if(index>0){
+      index--;
+    }else{
+      $('.banner-container').scrollLeft(window.innerWidth * count);
+      index=count-2;
+    }
+    $('.banner-container').animate({ scrollLeft: window.innerWidth * index }, 600);
+  }
+
+  let timeout;
+
   function animate(){
-    step();
-    setTimeout(() => {
+    timeout = setTimeout(() => {
+      step();
       animate();
     }, 15000);
   }
 
   animate();
+
+  $('.banner-buttons .left').click(function(){
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      animate();
+    }, 15000);
+    stepBack();
+  });
+
+  $('.banner-buttons .right').click(function(){
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      animate();
+    }, 15000);
+    step();
+  });
 });
