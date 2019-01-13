@@ -13,7 +13,7 @@ export interface DefaultLayout {
 const links = [
     {
       label: 'about',
-      href: './about',
+      href: '#about',
     },
     {
       label: 'services',

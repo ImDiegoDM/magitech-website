@@ -5,7 +5,7 @@ import { Title } from '../Title/Title';
 export function About() {
 
   return <>
-    <section className="about">
+    <section id="about" className="about">
       <div>
         <Title section={about.title} title={about.title} subtitle={about.subtitle}/>
         <p className="about-content">{about.content}</p>
