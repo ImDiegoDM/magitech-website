@@ -12,7 +12,11 @@ const fs = require('fs');
 // The `clean` function is not exported so it can be considered a private task.
 // It can still be used within the `series()` composition.
  
-function build() {
+async function build() {
+  if (!fs.existsSync('./dist')) {
+    fs.mkdirSync('./dist');
+  }
+
   return src(['src/**/*.ts','src/**/*.tsx'])
     .pipe(ts({
       outFile: 'index.js',
@@ -28,6 +32,14 @@ function build() {
 
 function moveJs(){
   return src('src/**/js/*.js',{realpath:true}).pipe(copy('dist/public/js', { prefix: 100 }))
+}
+
+function moveEnvs(){
+  return src(['./.*.env','./.env']).pipe(dest('./dist'));
+}
+
+function watchEnvs(){
+  watch(['./.*.env','./.env'],{usePolling: true}, moveEnvs);
 }
 
 function watchJs(){
@@ -86,6 +98,6 @@ exports.build = build;
 exports.watchTsfiles = watchTsfiles;
 exports.sass = buildSass;
 exports.default = series(
-  parallel(build,buildSass,moveJs),
-  parallel(runServer,watchTsfiles,watchLessfiles,watchJs)
+  parallel(build,buildSass,moveJs,moveEnvs),
+  parallel(runServer,watchTsfiles,watchLessfiles,watchJs,watchEnvs)
 );

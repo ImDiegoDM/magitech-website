@@ -2,7 +2,7 @@ import { faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as React from 'react';
 import { Project } from '../../../Interfaces/projects';
-import { highlights } from '../../../Mocks/highlights';
+import { projects } from '../../../Mocks/projects';
 
 interface BannerProps {
   highlights: Project[];
@@ -30,7 +30,7 @@ function BennerItem(porps: BennerItemProps) {
 
 export function Banner(props: BannerProps) {
   return <div className="banner-container">
-    <div className="banner-item-wrap" style={{width: `calc(100vw * ${highlights.length + 1})`}}>
+    <div className="banner-item-wrap" style={{width: `calc(100vw * ${projects.length + 1})`}}>
       {props.highlights.map((item, index) => {
         return <BennerItem item={item} />;
       })}

@@ -1,14 +1,19 @@
 import * as React from 'react';
+import { SectionDescription } from '../../../Interfaces/description';
 import { about } from '../../../Mocks/about';
 import { Title } from '../Title/Title';
 
-export function About() {
+export interface AboutProps extends SectionDescription {
+  content: string;
+}
+
+export function About(props: AboutProps) {
 
   return <>
     <section id="about" className="about">
       <div>
-        <Title section={about.title} title={about.title} subtitle={about.subtitle}/>
-        <p className="about-content">{about.content}</p>
+        <Title section={props.title} title={props.title} subtitle={props.subtitle}/>
+        <p className="about-content">{props.content}</p>
       </div>
       <div>
         <img src="public/images/illustration_Mago.png" alt="wizard"/>

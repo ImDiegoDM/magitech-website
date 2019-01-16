@@ -17,15 +17,15 @@ const links = [
     },
     {
       label: 'services',
-      href: './services',
+      href: '#services',
     },
     {
       label: 'portfolio',
-      href: './portfolio',
+      href: '#portfolio',
     },
     {
       label: 'contact',
-      href: './contact',
+      href: '#contact',
     },
 ];
 

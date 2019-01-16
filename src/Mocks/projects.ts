@@ -1,4 +1,4 @@
-export const highlights = [
+export const projects = [
   {
     name: 'Shield Impact',
     // tslint:disable-next-line:max-line-length

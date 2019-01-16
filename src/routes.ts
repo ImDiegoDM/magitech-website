@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { Application } from 'express-serve-static-core';
-import { HomeController, UserResource } from './Controllers';
+import { HomeController, MailController, UserResource } from './Controllers';
 import { mapRoutes } from './utils/mapRoutes';
 
 export function routes(app: Application) {
@@ -9,6 +9,7 @@ export function routes(app: Application) {
 
   mapRoutes(apiRouter, [
     new UserResource(),
+    new MailController(),
   ]);
 
   mapRoutes(staticRouter, [
