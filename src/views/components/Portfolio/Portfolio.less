@@ -28,6 +28,43 @@
             background-size: cover;
             background-position: center;
           }
+          .carrousel-iten-content{
+            padding: 20px 30px;
+            font-family: Gotham-bold;
+            position: relative;
+            width: 55%;
+            .play{
+              p{
+                font-family: 'Gotham-bold';
+                font-size: .7em;
+              }
+              img{
+                width: 100px;
+              }
+            }
+            .year{
+              color: #662D91;
+              font-size: .75em;
+            }
+            .subtitle{
+              font-size: .8em;
+              &::after{
+                content: '';
+                display: block;
+                background: #662d91;
+                background: -moz-linear-gradient(left,#662d91 0,#8076f9 100%);
+                background: -webkit-linear-gradient(left,#662d91 0,#8076f9 100%);
+                background: linear-gradient(to right,#662d91 0,#8076f9 100%);
+                width: 50%;
+                height: 2px;
+                margin-top: 5px;
+              }
+            }
+            .description{
+              font-size: .65em;
+              color: #7145a3;
+            }
+          }
         }
       }
     }
