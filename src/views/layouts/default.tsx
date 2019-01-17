@@ -47,6 +47,7 @@ export default function DefaultLayout(props: DefaultLayout) {
       </div>
       <script src="https://code.jquery.com/jquery-3.3.1.min.js" />
       <script src="public/js/banner.js"></script>
+      <script src="public/js/portfolio.js"></script>
     </body>
   </html>;
 }

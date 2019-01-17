@@ -1,0 +1,56 @@
+@import "../../container-width.less";
+
+.carrousel-buttons-container{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top:0;
+  pointer-events: none;
+  .carrousel-buttons{
+    height: 100%;
+    width: 100%;
+  }
+  div{
+    margin: auto;
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    button{
+      position: absolute;
+      pointer-events: auto;
+      svg{
+        height: 20px;
+      }
+      &.left{
+        left: 0;
+      }
+      &.right{
+        right: 0;
+      }
+    }
+    .carrousel-icons-container{
+      position: absolute;
+      height: auto;
+      left: 50%;
+      transform: translateX(-50%);
+      .selected-icon{
+        width: 10px;
+        height: 10px;
+        margin: 0 10px;
+        border-radius: 50%;
+        position: relative;
+        padding: 1px;
+        & .inner{
+          height: 80%;
+          width: 80%;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          border-radius: 100%;
+        }
+      }
+    }
+  }
+}

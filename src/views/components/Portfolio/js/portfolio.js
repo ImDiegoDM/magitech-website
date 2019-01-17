@@ -1,48 +1,44 @@
 $(document).ready(function(){
 
-  const count = $('.banner-container .banner-item').length;
+  const count = $('#portfolio .carrousel-iten').length;
   let index = 0;
+  let width = $('#portfolio .carrousel-scroller').innerWidth();
 
   window.addEventListener('resize',function(){
-    $('.banner-container').scrollLeft(window.innerWidth * index);
+    width = $('#portfolio .carrousel-scroller').innerWidth();
+    $('#portfolio .carrousel-scroller').scrollLeft(width * index);
   });
-
-  function clearActiveClass(){
-    $('.banner-icons-container .selected-icon').removeClass('active');
-  }
 
   function selectItem(index){
     if(index===count-1){
       index=0;
     }
-    const element = $('.banner-container .carrousel-icons-container .selected-icon')[index];
-    $('.banner-container .carrousel-icons-container .selected-icon .inner').css({backgroundColor:'transparent'});
+    const element = $('#portfolio .carrousel .carrousel-icons-container .selected-icon')[index];
+    $('#portfolio .carrousel .carrousel-icons-container .selected-icon .inner').css({backgroundColor:'transparent'});
     $(element).children().css({backgroundColor:$(element).children().attr('data-color')});
     console.log($(element).children());
   }
 
   function step(){
-    clearActiveClass();
     if(index<count-1){
       index++;
     }else{
-      $('.banner-container').scrollLeft(0);
+      $('#portfolio .carrousel-scroller').scrollLeft(0);
       index=1;
     }
     selectItem(index);
-    $('.banner-container').animate({ scrollLeft: window.innerWidth * index }, 600);
+    $('#portfolio .carrousel-scroller').animate({ scrollLeft: width * index }, 600);
   }
 
   function stepBack(){
-    clearActiveClass();
     if(index>0){
       index--;
     }else{
-      $('.banner-container').scrollLeft(window.innerWidth * count);
+      $('#portfolio .carrousel-scroller').scrollLeft(width * count);
       index=count-2;
     }
     selectItem(index);
-    $('.banner-container').animate({ scrollLeft: window.innerWidth * index }, 600);
+    $('#portfolio .carrousel-scroller').animate({ scrollLeft: width * index }, 600);
   }
 
   let timeout;
@@ -56,7 +52,7 @@ $(document).ready(function(){
 
   animate();
 
-  $('.banner-container .carrousel-buttons-container .left').click(function(){
+  $('#portfolio .carrousel .carrousel-buttons-container .left').click(function(){
     clearTimeout(timeout);
     timeout = setTimeout(() => {
       animate();
@@ -64,7 +60,7 @@ $(document).ready(function(){
     stepBack();
   });
 
-  $('.banner-container .carrousel-buttons-container .right').click(function(){
+  $('#portfolio .carrousel .carrousel-buttons-container .right').click(function(){
     clearTimeout(timeout);
     timeout = setTimeout(() => {
       animate();

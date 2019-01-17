@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as React from 'react';
 import { Project } from '../../../Interfaces/projects';
 import { projects } from '../../../Mocks/projects';
+import { CarrouselButtons } from '../CarrouselButtons/CarrouselButtons';
 
 interface BannerProps {
   highlights: Project[];
@@ -36,19 +37,6 @@ export function Banner(props: BannerProps) {
       })}
       <BennerItem item={props.highlights[0]} />;
     </div>
-    <div className="banner-buttons">
-      <div>
-        <button className="left">
-          <FontAwesomeIcon icon={faChevronLeft}/>
-        </button>
-        <button className="right">
-          <FontAwesomeIcon icon={faChevronRight}/>
-        </button>
-        <div className="banner-icons-container">
-          <span className="selected-icon"></span>
-          <span className="selected-icon"></span>
-        </div>
-      </div>
-    </div>
+    <CarrouselButtons dotsOffsetY="12%" customClass="container-width" quantity={props.highlights.length} color="white"/>
   </div>;
 }
