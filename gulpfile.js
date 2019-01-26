@@ -35,7 +35,7 @@ function moveJs(){
 }
 
 function moveEnvs(){
-  return src(['./.*.env','./.env']).pipe(dest('./dist'));
+  return src(['./.*.env','./.env'],{allowEmpty:true}).pipe(dest('./dist'));
 }
 
 function watchEnvs(){
