@@ -58,6 +58,18 @@ function runServer(cb) {
   });
 }
 
+function runNode(){
+  exec('node ./dist/index',(error,stdout,stderr)=>{
+    console.log(`starting nodemon server`);
+
+    if(error){
+      console.log(`error: ${error}`);
+    }
+
+    console.log(`stdout: ${stdout}`);
+  });
+}
+
 function watchTsfiles(cb) {
   console.log('watching ts files')
   watch(['src/**/*.ts','src/**/*.tsx'],{usePolling: true}, build);
@@ -94,7 +106,7 @@ function watchLessfiles(cb) {
 }
 
 exports.moveJs = moveJs;
-exports.build = series(build,buildSass,moveJs,moveEnvs,runServer);
+exports.build = series(build,buildSass,moveJs,moveEnvs,runNode);
 exports.watchTsfiles = watchTsfiles;
 exports.sass = buildSass;
 exports.default = series(
