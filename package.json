@@ -26,11 +26,6 @@
     "@types/react": "^16.7.18",
     "@types/react-dom": "^16.0.11",
     "@types/webpack-env": "^1.13.6",
-    "gulp": "^4.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-less": "^4.0.1",
-    "gulp-typescript": "^5.0.0",
-    "happypack": "^5.0.0",
     "jest": "^23.6.0",
     "ts-jest": "^23.10.5",
     "webpack-cli": "^3.1.2",
@@ -60,6 +55,11 @@
     "react-dom": "^16.8.0-alpha.0",
     "ts-loader": "^5.3.0",
     "typescript": "^3.1.6",
-    "webpack": "^4.26.1"
+    "webpack": "^4.26.1",
+    "gulp": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-less": "^4.0.1",
+    "gulp-typescript": "^5.0.0",
+    "happypack": "^5.0.0"
   }
 }
