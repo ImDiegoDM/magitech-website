@@ -39,7 +39,7 @@ function moveEnvs(){
 }
 
 function watchEnvs(){
-  watch(['./.*.env','./.env'],{usePolling: true}, moveEnvs);
+  watch(['./.*.env','./.env'],{usePolling: true,allowEmpty:true}, moveEnvs);
 }
 
 function watchJs(){
