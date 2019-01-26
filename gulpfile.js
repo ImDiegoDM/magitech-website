@@ -94,7 +94,7 @@ function watchLessfiles(cb) {
 }
 
 exports.moveJs = moveJs;
-exports.build = build;
+exports.build = series(build,buildSass,moveJs,moveEnvs,runServer);
 exports.watchTsfiles = watchTsfiles;
 exports.sass = buildSass;
 exports.default = series(

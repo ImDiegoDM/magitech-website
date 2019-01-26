@@ -16,7 +16,7 @@ export function routes(app: Application) {
     new HomeController(),
   ]);
 
-  app.use('/v1/api', apiRouter);
+  app.use('/api/v1', apiRouter);
 
   app.use('/', staticRouter);
 }

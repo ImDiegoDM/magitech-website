@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { about } from '../../Mocks/about';
+import { contact } from '../../Mocks/contact';
 import { projects } from '../../Mocks/projects';
 import { portfolio } from '../../Mocks/protfolio';
 import { whatWeDo } from '../../Mocks/what-we-do';
@@ -14,6 +15,7 @@ export class HomeController implements IController {
         about,
         whatWeDo,
         portfolio,
+        contact,
       };
 
       res.render('index', indexContent);

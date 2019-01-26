@@ -8,6 +8,8 @@ export interface DefaultLayout {
   children: JSX.Element | JSX.Element[];
   bodyClass?: any;
   highlights: Project[];
+  description: string;
+  scripts?: string[];
 }
 
 const links = [
@@ -33,7 +35,8 @@ export default function DefaultLayout(props: DefaultLayout) {
   return <html>
     <head>
       <title>{props.title}</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <meta name="Description" content={props.description}></meta>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
       <link rel="stylesheet" href="public/main.css"/>
     </head>
@@ -45,9 +48,9 @@ export default function DefaultLayout(props: DefaultLayout) {
           {props.children}
         </div>
       </div>
-      <script src="https://code.jquery.com/jquery-3.3.1.min.js" />
-      <script src="public/js/banner.js"></script>
-      <script src="public/js/portfolio.js"></script>
+      {props.scripts.map((item) => {
+        return <script src={item}/>;
+      })}
     </body>
   </html>;
 }

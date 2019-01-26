@@ -1,0 +1,28 @@
+.magitech-input{
+  margin-bottom: 15px;
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid #b5b1b1;
+  &:focus{
+    outline: none;
+    border-color: #662d91;
+  }
+}
+
+.magitech-textarea{
+  .magitech-input();
+  resize: none;
+}
+
+button[type=submit]{
+  font-family: "Gotham-bold";
+  transition: all .3s;
+  padding: 10px 25px;
+  border-radius: 5px;
+  border: 1px solid #662d91;
+  color: #662d91;
+  &:hover{
+    color: white;
+    background-color: #662d91;
+  }
+}
