@@ -8,7 +8,7 @@
     "build": "webpack",
     "build:dev": "tsc",
     "nodemon": "nodemon",
-    "start": "gulp build",
+    "start": "gulp build && node ./dist/index.js",
     "gulp": "gulp",
     "gulp:tasks": "gulp --tasks",
     "db-migrate": "db-migrate",
