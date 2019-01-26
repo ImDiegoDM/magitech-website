@@ -16,7 +16,7 @@ export function About(props: AboutProps) {
         <p className="about-content">{props.content}</p>
       </div>
       <div>
-        <img src="public/images/illustration_Mago.png" alt="wizard"/>
+        <img src="public/images/Illustration_Mago.png" alt="wizard"/>
       </div>
     </section>
     <hr/>
