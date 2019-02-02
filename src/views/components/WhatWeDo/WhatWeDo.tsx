@@ -17,7 +17,7 @@ export function WhatWeDo(props: WhatWeDoProps) {
       <Title title={whatWeDo.title} subtitle={whatWeDo.subtitle} section={whatWeDo.section}/>
       <div className="content">
         {whatWeDo.content.map((item, index) => {
-          return <div>
+          return <div key={index}>
             <img src={item.imgLink} alt="what we do img"/>
             <h6>{item.title}</h6>
             <p>{item.subtitle}</p>

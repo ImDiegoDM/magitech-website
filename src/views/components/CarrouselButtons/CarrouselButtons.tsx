@@ -14,7 +14,7 @@ export function CarrouselButtons(props: CarrouselButtonsProps) {
 
   for (let i = 0; i < props.quantity; i++) {
     dots.push(
-      <span style={{border: `1px solid ${props.color}`}} className="selected-icon">
+      <span key={i} style={{border: `1px solid ${props.color}`}} className="selected-icon">
         <span data-color={props.color} className="inner"></span>
       </span>);
   }

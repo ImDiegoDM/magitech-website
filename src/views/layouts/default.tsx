@@ -48,8 +48,8 @@ export default function DefaultLayout(props: DefaultLayout) {
           {props.children}
         </div>
       </div>
-      {props.scripts.map((item) => {
-        return <script src={item}/>;
+      {props.scripts.map((item, index) => {
+        return <script key={index} src={item}/>;
       })}
     </body>
   </html>;

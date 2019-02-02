@@ -33,7 +33,7 @@ export function Banner(props: BannerProps) {
   return <div className="banner-container">
     <div className="banner-item-wrap" style={{width: `calc(100vw * ${projects.length + 1})`}}>
       {props.highlights.map((item, index) => {
-        return <BennerItem item={item} />;
+        return <BennerItem key={index} item={item} />;
       })}
       <BennerItem item={props.highlights[0]} />;
     </div>

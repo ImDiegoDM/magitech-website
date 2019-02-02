@@ -28,7 +28,7 @@ export function PortfolioProject(props: PortfolioProjectProps) {
               <h3>{props.project.name}</h3>
               <p className="subtitle">{props.project.subtitle}</p>
             </div>
-            <span className="year">{props.project.created_at.years()}</span>
+            <span className="year">{props.project.created_at.year()}</span>
           </div>
           <p className="description">{props.project.description}</p>
           <div className="play">
@@ -56,7 +56,7 @@ export function Portfolio(props: PortfolioProps) {
         <div className="carrousel-scroller">
           <div className="carrousel-content" style={{width: `calc(100% * ${props.projects.length + 1})` }}>
             {props.projects.map((item, index) => {
-              return <PortfolioProject project={item}/>;
+              return <PortfolioProject key={index} project={item}/>;
             })}
             <PortfolioProject project={props.projects[0]}/>
           </div>

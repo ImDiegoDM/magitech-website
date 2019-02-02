@@ -4,4 +4,4 @@ WORKDIR /magitech
 
 EXPOSE 3000
 
-CMD npm install && npm run migrate:up && npm start
+CMD npm install && npm run migrate:up && npm run gulp
