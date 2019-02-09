@@ -25,7 +25,7 @@ async function build() {
       sourceMap: true,
       module: "commonjs",
       target: "es6",
-      jsx: "preserve",
+      jsx: "react",
     }))
     .pipe(dest('./dist'));
 }

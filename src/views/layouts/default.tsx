@@ -32,16 +32,8 @@ const links = [
 ];
 
 export default function DefaultLayout(props: DefaultLayout) {
-  return <html>
-    <head>
-      <title>{props.title}</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1"/>
-      <meta name="Description" content={props.description}></meta>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
-      <link rel="stylesheet" href="public/main.css"/>
-    </head>
-    <body className="gradient-bg">
-      <Nav links={links}/>
+  return <>
+    <Nav links={links}/>
       <Banner highlights={props.highlights}/>
       <div className="magitech-container container-up">
         <div className="magitech-content">
@@ -51,6 +43,5 @@ export default function DefaultLayout(props: DefaultLayout) {
       {props.scripts.map((item, index) => {
         return <script key={index} src={item}/>;
       })}
-    </body>
-  </html>;
+  </>;
 }
